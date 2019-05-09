@@ -39,7 +39,7 @@ fun main(args: Array<String>) {
         var input: String? = readLine()
         when (input?.toInt()) {
             1 -> {
-                itsDone@ do {
+                /*itsDone@ do {
                     println(menuIngredient)
                     var inputSub: String? = readLine()
                     when (inputSub?.toInt()) {
@@ -51,20 +51,49 @@ fun main(args: Array<String>) {
                         2 -> break@itsDone
                         else -> println(invalidInput)
                     }
-                } while (inputSub?.toInt() != 2)
+                } while (inputSub?.toInt() != 2)*/
+                makeRecipe(listArray)
             }
             2 -> {
-                if (listArray.isEmpty()) {
+                /*if (listArray.isEmpty()) {
                     println(recipeEmpty)
                 } else {
                     println(textRecipe)
                     for ((index, ingredient) in listArray.withIndex()) {
                         println("$index :$ingredient")
                     }
-                }
+                }*/
+                viewRecipe(listArray)
             }
             3 -> break@end
             else -> println(invalidInput)
         }
     } while (input?.toInt() != 3)
+}
+
+fun makeRecipe(listArray : MutableList<String>){
+    itsDone@ do {
+        println(menuIngredient)
+        var inputSub: String? = readLine()
+        when (inputSub?.toInt()) {
+            1 -> {
+                print(ingredients)
+                var ingredient: String? = readLine()
+                listArray.add(listIngredients.get(parseInt(ingredient)))
+            }
+            2 -> break@itsDone
+            else -> println(invalidInput)
+        }
+    } while (inputSub?.toInt() != 2)
+}
+
+fun viewRecipe(listArray : MutableList<String>){
+    if (listArray.isEmpty()) {
+        println(recipeEmpty)
+    } else {
+        println(textRecipe)
+        for ((index, ingredient) in listArray.withIndex()) {
+            println("$index :$ingredient")
+        }
+    }
 }
